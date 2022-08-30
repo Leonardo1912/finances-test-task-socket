@@ -17,10 +17,7 @@ const Finances = () => {
             socket.connect()
         }
     }, [time])
-    const {finances, prevFinances} = useSelector(state => state.financesPage)
-    console.log("new", finances)
-    console.log("prev", prevFinances)
-
+    const {finances} = useSelector(state => state.financesPage)
 
     if (finances.length === 0) {
         return <div>LOADING...</div>

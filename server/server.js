@@ -49,12 +49,10 @@ function trackTickers(socket, time) {
     getQuotes(socket);
     // every N seconds
     const timer = setInterval(function () {
-        console.log(time)
         getQuotes(socket);
     }, time);
 
     socket.on('disconnect', function () {
-        console.log("bye")
         clearInterval(timer);
     });
 }
@@ -96,7 +94,6 @@ app.put("/activate/:ticker", cors(), (req, res) => {
 
 socketServer.on('connection', (socket) => {
     socket.on('start', (time) => {
-        console.log("start")
         trackTickers(socket, time);
     });
 });
